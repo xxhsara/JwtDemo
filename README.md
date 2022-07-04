@@ -1,5 +1,5 @@
 # JwtDemo
-简单实现JWT
+简单实现JWT【如有不正确之处，欢迎指正】
 
 1，AuthorizeService  授权服务器，获取token
 
