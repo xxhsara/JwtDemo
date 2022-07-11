@@ -588,11 +588,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\09项目实战\\JwtProject\\ResourceService\\ResourceService.csproj",
+      "projectUniqueName": "E:\\09项目实战\\JwtDemo\\ResourceService\\ResourceService.csproj",
       "projectName": "ResourceService",
-      "projectPath": "E:\\09项目实战\\JwtProject\\ResourceService\\ResourceService.csproj",
+      "projectPath": "E:\\09项目实战\\JwtDemo\\ResourceService\\ResourceService.csproj",
       "packagesPath": "C:\\Users\\Samuel\\.nuget\\packages\\",
-      "outputPath": "E:\\09项目实战\\JwtProject\\ResourceService\\obj\\",
+      "outputPath": "E:\\09项目实战\\JwtDemo\\ResourceService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

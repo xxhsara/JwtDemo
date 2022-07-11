@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VHLEbMQcOouOzNFTuBz/U9Ckaes0oDriznyyOGuIlydgLymYKX0p+6347TT/SMt+5ksaiZ6x2FYAzY+7rrzlMg==",
+  "dgSpecHash": "0WiztZdO6L15LkNM2VoEcpaTYI0cyxzaQD7gaSleCVnnI29wbe01ugZg1qGcD+pR5mF5ywYki8bzd23OY+Xuwg==",
   "success": true,
-  "projectFilePath": "E:\\09项目实战\\JwtProject\\ResourceService\\ResourceService.csproj",
+  "projectFilePath": "E:\\09项目实战\\JwtDemo\\ResourceService\\ResourceService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Samuel\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.6\\microsoft.aspnetcore.authentication.jwtbearer.6.0.6.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
