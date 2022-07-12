@@ -1,0 +1,6 @@
+/.vs
+/AuthorizeApi/obj
+/AuthorizeApi/bin
+/ResourceService/obj
+/ResourceService/bin
+/AuthorizeService/*

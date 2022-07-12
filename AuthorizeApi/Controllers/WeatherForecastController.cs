@@ -1,10 +1,12 @@
 using AuthorizeService.Utils;
 using Microsoft.AspNetCore.Mvc;
+using System.Buffers.Text;
+using System.Text;
 
 namespace AuthorizeApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly IJwtHelper _jwtHelper;
@@ -14,8 +16,8 @@ namespace AuthorizeApi.Controllers
             _jwtHelper = jwtHelper;
         }
 
-        [HttpGet(Name = "GetToken")]
-        public string GetToken(GetJwtTokenDto dto)
+        [HttpPost(Name = "GenerateToken")]
+        public string GenerateToken(GetJwtTokenDto dto)
         {
             var token = String.Empty;
             if (dto.UserName == "admin" && dto.Password == "123456")
