@@ -13,7 +13,8 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.Configure<JwtTokenOptions>(builder.Configuration.GetSection("JwtTokenOptions"));
-builder.Services.AddTransient<IJwtHelper, JwtHelper>();
+//builder.Services.AddTransient<IJwtHelper, HmacShaJwtHelper>();
+builder.Services.AddTransient<IJwtHelper, RSAJwtHelper>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

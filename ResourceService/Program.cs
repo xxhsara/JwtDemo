@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using ResourceService;
 using ResourceService.Seettings;
+using System.Security.Cryptography;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,25 @@ builder.Services.AddSwaggerGen();
 
 var tokenOption = new JwtTokenOptions();
 builder.Configuration.Bind("JwtTokenOptions", tokenOption);
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer(options =>
+//    {
+//        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+//        {
+//            ValidateIssuer = false,
+//            ValidateAudience = false,
+//            ValidateLifetime = true,
+//            IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOption.SecurityKey))
+//        };
+//    });
+
+#region RSA JWT
+string keyDir = Directory.GetCurrentDirectory();
+if (RSAHelper.TryGetKeyParameters(keyDir, false, out RSAParameters rSAParameters) == false)
+{
+    RSAHelper.GenerateAndSaveKey(keyDir,false);
+    RSAHelper.TryGetKeyParameters(keyDir, false, out rSAParameters);
+}
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -24,9 +45,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = false,
             ValidateAudience = false,
             ValidateLifetime = true,
-            IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOption.SecurityKey))
+            IssuerSigningKey = new RsaSecurityKey(rSAParameters)
         };
     });
+#endregion
+
+
 
 var app = builder.Build();
 
