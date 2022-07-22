@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using System.ComponentModel;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace AuthorizeApi.Utils
 {
@@ -22,17 +24,17 @@ namespace AuthorizeApi.Utils
             }
         }
 
-        public static RSAParameters GenerateAndSaveKey(string filePath,bool withPrivate=true)
+        public static RSAParameters GenerateAndSaveKey(string filePath, bool withPrivate = true)
         {
             RSAParameters publicKeys, privateKeys;
-            using(var rsa=new RSACryptoServiceProvider(2048))
+            using (var rsa = new RSACryptoServiceProvider(2048))
             {
                 try
                 {
                     privateKeys = rsa.ExportParameters(true);
                     publicKeys = rsa.ExportParameters(false);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw;
                 }
@@ -47,6 +49,17 @@ namespace AuthorizeApi.Utils
 
             return withPrivate ? privateKeys : publicKeys;
 
+        }
+
+        public static string RSAEncrypt(string plainText)
+        {
+            UnicodeEncoding unicodeEncoding = new UnicodeEncoding();
+            byte[] DataToEncrypt = Encoding.UTF8.GetBytes(plainText);
+
+            RSACryptoServiceProvider rSA = new RSACryptoServiceProvider();
+            byte[] bytes_Cyper_Str = rSA.Encrypt(DataToEncrypt, false);
+            string str_cypher = Convert.ToBase64String(bytes_Cyper_Str);
+            return str_cypher;
         }
     }
 }

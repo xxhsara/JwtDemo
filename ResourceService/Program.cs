@@ -18,6 +18,8 @@ builder.Services.AddSwaggerGen();
 
 var tokenOption = new JwtTokenOptions();
 builder.Configuration.Bind("JwtTokenOptions", tokenOption);
+
+#region SHA256
 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 //    .AddJwtBearer(options =>
 //    {
@@ -29,6 +31,8 @@ builder.Configuration.Bind("JwtTokenOptions", tokenOption);
 //            IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOption.SecurityKey))
 //        };
 //    });
+
+#endregion
 
 #region RSA JWT
 string keyDir = Directory.GetCurrentDirectory();

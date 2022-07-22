@@ -43,5 +43,12 @@ namespace AuthorizeApi.Controllers
                 Sign=decodeSign
             };
         }
+
+        [HttpPost]
+        public string EncodeJwtStr(DecodeJwt decodeJwt)
+        {
+            var token = JwtEncode.GetJwtEncodeStr(decodeJwt);
+            return token;
+        }
     }
 }
